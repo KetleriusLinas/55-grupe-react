@@ -2,18 +2,18 @@ import { PageTemplate } from "../template/PageTemplate.js";
 
 export class PageHome extends PageTemplate {
 
-    constructor(){
-        super();
-        this.pageJS = 'main';
+    constructor(req) {
+        super(req);
+        this.pageJS = 'main.js';
     }
 
-    main () {
+    main() {
         const services = ['UX', 'Design', 'Developer'];
         let servicesHTML = '';
 
         for (const service of services) {
             servicesHTML += `<li>${service}</li>`
-    }
+        }
         return ` 
             <h1>
             <i class="fa fa-home"></i> 

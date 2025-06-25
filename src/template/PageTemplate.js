@@ -1,5 +1,6 @@
 export class PageTemplate {
-    constructor() {
+    constructor(req) {
+        this.req = req;
         this.PageType = 'default';
         this.isAsideVisible = true;
         this.pageJS = '';
@@ -24,7 +25,7 @@ export class PageTemplate {
     header() {
         return `    
         <header>
-            <img src="/img/logo.png" alt="Logo">
+            <img src="/img/logo.webp" alt="Logo">
             <nav>
                 <a href="/">Home</a>
                 <a href="/about">About</a>
@@ -37,7 +38,7 @@ export class PageTemplate {
     headerAuth() {
         return `    
         <header>
-            <img src="/img/logo.png" alt="Logo">
+            <img src="/img/logo.webp" alt="Logo">
             <nav>
                 <a href="/register">Register</a>
                 <a href="/login">Login</a>
