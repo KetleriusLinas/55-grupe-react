@@ -2,7 +2,8 @@ export class PageTemplate {
     constructor() {
         this.PageType = 'default';
         this.isAsideVisible = true;
-     }
+        this.pageJS = '';
+    }
 
     head() {
         return `
@@ -10,13 +11,21 @@ export class PageTemplate {
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                 <title>Express example</title>
+                <link rel="shortcut icon" href="/favicon.ico" />
+                <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+                <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+                <meta name="apple-mobile-web-app-title" content="Coming soon" />
+                <link rel="manifest" href="/favicon/site.webmanifest" />
+                <link rel="stylesheet" href="/css/main.css"
+                <link rel="stylesheet" href="/css/main.css">
             </head>`;
     };
 
     header() {
         return `    
         <header>
-            <img src="#" alt="Logo">
+            <img src="/img/logo.png" alt="Logo">
             <nav>
                 <a href="/">Home</a>
                 <a href="/about">About</a>
@@ -29,7 +38,7 @@ export class PageTemplate {
     headerAuth() {
         return `    
         <header>
-            <img src="#" alt="Logo">
+            <img src="/img/logo.png" alt="Logo">
             <nav>
                 <a href="/register">Register</a>
                 <a href="/login">Login</a>
@@ -57,11 +66,18 @@ export class PageTemplate {
         </footer>`;
     };
 
+    script() {
+        if (this.pageJS === '') {
+            return '';
+        }
+        return `<script src="/js/${this.pageJS}" type="module"></script>`;
+    }
+
     aside() {
         return `<aside>SONINIS MENU</aside>`;
     }
 
-    main () {
+    main() {
         return `Content...`;
     }
 
@@ -75,7 +91,8 @@ export class PageTemplate {
             ${this.isAsideVisible ? this.aside() : ''}
         <main>${this.main()}</main>
                 ${this.PageType === 'default' ? this.footer() : this.footerAuth()}
+                ${this.script()}
         </body>
-        </html>`;
+        </html>`;  
     };
 };

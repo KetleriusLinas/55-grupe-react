@@ -7,6 +7,8 @@ import { Page404 } from './pages/Page404.js';
 const app = express();
 const port = 3001;
 
+app.use(express.static('public'));
+
 app.get('/', (req, res) => res.send(new PageHome().render()));
 app.get('/about', (req, res) => res.send(new PageAbout().render()));
 app.get('/register', (req, res) => res.send(new PageRegister().render()));
