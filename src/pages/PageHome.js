@@ -15,7 +15,9 @@ export class PageHome extends PageTemplate {
             servicesHTML += `<li>${service}</li>`
     }
         return ` 
-            <h1>Home page</h1>
+            <h1>
+            <i class="fa fa-home"></i> 
+            Home page</h1>
             <p>Lorem ipsum dolor sit amet  labore  Iusto, sapiente. Natus.labore  Iusto,    sapiente. Natuslabore  Iusto, sapiente. Natus</p>
             <h1>Services</h1>
             <ul>${servicesHTML}</ul>`;
