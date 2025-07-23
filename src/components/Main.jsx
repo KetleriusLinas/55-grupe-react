@@ -1,9 +1,9 @@
-export function Main(props) {
+export function Main({children}) {
 
     return (
         <main>
             Main CONTENTAS - START
-            {props.children} 
+            {children} 
             Main CONTENTAS - END
         </main>
     );
