@@ -11,6 +11,8 @@ body {
 }
 
 .calculator {
+  margin: 2rem 0;
+  ;
   font-size: 2rem;
   padding: 1rem;
   border: 1px solid #ccc;
