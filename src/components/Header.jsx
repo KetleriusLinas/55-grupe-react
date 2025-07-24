@@ -3,14 +3,14 @@ import logo from '../assets/react.svg';
 
 export function Header() {
     return (
-            <header>
-                <img src={logo} alt="Logo" />
-                <nav>
-                    <Link to="/">Home</Link>
-                    <Link to="/about">About</Link>
-                    <Link to="/services">Services</Link>
-                    <Link to="/login">Login</Link>
-                    <Link to="/register">Register</Link>
+            <header className="header">
+                <img className="logo" src={logo} alt="Logo" />
+                <nav className="main-nav">
+                    <Link className="link" to="/">Home</Link>
+                    <Link className="link" to="/about">About</Link>
+                    <Link className="link" to="/services">Services</Link>
+                    <Link className="link" to="/login">Login</Link>
+                    <Link className="link" to="/register">Register</Link>
                 </nav>
             </header>
     );

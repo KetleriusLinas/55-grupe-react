@@ -1,7 +1,7 @@
 export function Footer() {
     return (
         <footer>
-            FOOTERIS CONTENTAS
+            <p>FOOTERIS CONTENTAS</p>
         </footer>
     );
 }

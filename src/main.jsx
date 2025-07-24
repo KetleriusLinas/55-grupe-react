@@ -11,19 +11,22 @@ import { Register } from './pages/Register.jsx'
 import { Error404 } from './pages/Error404.jsx'
 import { Services } from './pages/Services.jsx'
 import { ServiceInner } from './pages/ServiceInner.jsx'
+import { PublicTemplate } from './templates/PublicTemplate.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/Login' element={<Login />} />
-        <Route path='/Services' element={<Services />} />
-        <Route path='/Services/:service' element={<ServiceInner />} />
-        <Route path='/About' element={<About />} />
-        <Route path='/Register' element={<Register />} />
+        <Route element={<PublicTemplate />}>
+          <Route path='/' element={<Home />} />
+          <Route path='/Login' element={<Login />} />
+          <Route path='/Services' element={<Services />} />
+          <Route path='/Services/:service' element={<ServiceInner />} />
+          <Route path='/About' element={<About />} />
+          <Route path='/Register' element={<Register />} />
 
-        <Route path='*' element={<Error404 />} />
+          <Route path='*' element={<Error404 />} />
+        </Route>
 
       </Routes>
     </BrowserRouter>
