@@ -2,38 +2,42 @@ import { TextList } from "../components/text-list/TextList";
 
 export function Home() {
     const list = ['Pomidoras', 'Agurkas', 'Svogunas', 'Cesnakas', 'Bulve'];
-    const liList = list.map(text => <li key={text}>{text}</li>);
-    // list.map(text => <li>{text}</li>
-    // for (const text of list) {
 
-    //     if (text.length > 5){
-    //         liList.push(<li>{text}</li>)
-    //     }
-    // }
     return (
-        <>
-            <main>
-                <section className="container">
-                    <div className="row">
-                        <div className="col-12 mb-5">
-                            <ul><TextList /></ul>
-                        </div>
+        <main>
+            <section className="container">
+                <div className="row">
+                    <div className="col-12 mb-5">
+                        <TextList />
                     </div>
-                </section>
-                <section className="container">
-                    <div className="row">
-                        <div className="col-12 mb-5">
-                            <ul>
-                                {liList}
-                            </ul>
-                        </div>
+                </div>
+                <div className="row">
+                    <div className="col-12 mb-5 ms-3">
+                        <ul>{list.map(text => <li key={text}>{text}</li>)}</ul>
                     </div>
-                </section>
-            </main>
-        </>
+                </div>
+                <div className="row">
+                    <div className="col-12 col-md-6 col-lg-4 col-xxl-3">
+                        HOME PAGE 1
+                    </div>
+                    <div className="col-12 col-md-6 col-lg-4 col-xxl-3">
+                        HOME PAGE 2
+                    </div>
+                    <div className="col-12 col-md-6 col-lg-4 col-xxl-3">
+                        HOME PAGE 3
+                    </div>
+                    <div className="col-12 col-md-6 col-lg-4 col-xxl-3">
+                        HOME PAGE 4
+                    </div>
+                    <div className="col-12 col-md-6 col-lg-4 col-xxl-3">
+                        HOME PAGE 5
+                    </div>
+                    <div className="col-12 col-md-6 col-lg-4 col-xxl-3">
+                        HOME PAGE 6
+                    </div>
+                </div>
+            </section>
+        </main>
     );
 }
-
-
-
 // {<img src="/src/assets/react.svg" alt="Logo" />} - veikia, bet geriau importuotis , nes lengviau klaidas ieskoti jas parodo ekrane.
