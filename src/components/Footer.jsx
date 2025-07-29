@@ -12,6 +12,9 @@ export function Footer() {
                         <Link to="/" className="nav-link">Home</Link>
                     </li>
                     <li className="nav-item">
+                        <Link to="/todo" className="nav-link">Todo</Link>
+                    </li>
+                    <li className="nav-item">
                         <Link to="/about" className="nav-link">About</Link>
                     </li>
                     <li className="nav-item">
