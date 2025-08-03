@@ -1,12 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TodoForm } from "../components/todo/TodoForm";
 import { TodoList } from "../components/todo/TodoList";
 import { TodoStats } from "../components/todo/TodoStats";
 
 export function Todo() {
-    const [tabIndex, setTabIndex] = useState(0)
+    const dataKey = '55gr-todo';
+    const [tabIndex, setTabIndex] = useState(0);
     const [id, setId] = useState(1);
     const [list, setList] = useState([]);
+
+    useEffect(() => {
+        const data = JSON.parse(localStorage.getItem(dataKey));
+
+        if (data && data.length > 0) {
+            setList(data);
+            setId(data.at(-1).id + 1);
+        } else {
+            localStorage.setItem(dataKey, JSON.stringify(list));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem(dataKey, JSON.stringify(list));
+    }, [list]);
 
     let filteredList = list;
     if (tabIndex === 1) {
@@ -28,13 +44,20 @@ export function Todo() {
         setId(id => id + 1);
     }
 
-    function modifyTask(taskId) {
-        setList(currentList => currentList.map(
+    function modifyTaskCompletion(taskId) {
+        setList(currectList => currectList.map(
             task => task.id === taskId ? {
                 ...task,
-                isCompleted: true
-            }
-                : task));
+                isCompleted: true,
+            } : task));
+    }
+
+    function modifyTaskText(taskId, newText) {
+        setList(currectList => currectList.map(
+            task => task.id === taskId ? {
+                ...task,
+                text: newText,
+            } : task));
     }
 
     return (
@@ -43,15 +66,20 @@ export function Todo() {
                 <div className="row flex-column-reverse flex-md-row">
                     <div className="col-12 col-md-8">
                         <TodoForm addTaskFunc={addTask} />
+                        <nav>
+                            <div className="nav nav-tabs mb-3" role="tablist">
+                                <button className={'nav-link' + (tabIndex === 0 ? ' active' : '')}
+                                    onClick={() => setTabIndex(() => 0)} type="button">All tasks</button>
+                                <button className={'nav-link' + (tabIndex === 1 ? ' active' : '')}
+                                    onClick={() => setTabIndex(() => 1)} type="button">Active tasks</button>
+                                <button className={'nav-link' + (tabIndex === 2 ? ' active' : '')}
+                                    onClick={() => setTabIndex(() => 2)} type="button">Completed tasks</button>
+                            </div>
+                        </nav>
+                        <TodoList list={filteredList}
+                            modifyTaskTextFunc={modifyTaskText}
+                            modifyTaskCompletionFunc={modifyTaskCompletion} />
                     </div>
-                    <nav>
-                        <div className="nav nav-tabs mb-3" id="nav-tab">
-                            <button onClick={() => setTabIndex(() => 0)} className={'nav-link' + (tabIndex === 0 ? 'active' : '')} type="button">All Tasks</button>
-                            <button onClick={() => setTabIndex(() => 1)} className={'nav-link' + (tabIndex === 1 ? 'active' : '')} type="button" >Active Tasks</button>
-                            <button onClick={() => setTabIndex(() => 2)} className={'nav-link' + (tabIndex === 2 ? 'active' : '')} type="button">Completed Tasks</button>
-                        </div>
-                    </nav>
-                    <TodoList modifyTaskFunc={modifyTask} list={list.filter(item => !item.isCompleted)} />
                     <div className="col-12 col-md-4 mb-5">
                         <TodoStats
                             activeCount={list.filter(item => !item.isCompleted).length}

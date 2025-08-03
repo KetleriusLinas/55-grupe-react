@@ -1,32 +1,39 @@
-export function TodoItem(task, modifyTaskFunc) {
+import { useState } from "react";
 
+export function TodoItem({ task, modifyTaskTextFunc, modifyTaskCompletionFunc }) {
     const [isEditMode, setIsEditMode] = useState(false);
+    const [text, setText] = useState(task.text);
 
     if (isEditMode) {
         return (
-            <li className="d-flex my-2 p-2" key={task.id}
+            <li className="d-flex my-3 p-2" key={task.id}
                 style={{ backgroundColor: '#f1f1f1' }}>
-                {task.text}
+                <input onChange={(e) => setText(e.target.value)} value={text} style={{ display: 'flex', flexGrow: 1 }} type="text" />
                 {!task.isCompleted && (
-                    <button onClick={() => modifyTaskFunc(task.id)} className="btn btn-success btn-sm ms-auto">Update</button>
+                    <button onClick={() => {
+                        modifyTaskTextFunc(task.id, text);
+                        setIsEditMode(false);
+                    }} className="btn btn-success btn-sm ms-3">Update</button>
                 )}
                 {!task.isCompleted && (
-                    <button onClick={() => modifyTaskFunc(task.id)} className="btn btn-secondary btn-sm ms-auto">Cancel</button>
+                    <button onClick={() => {
+                        setText(task.text);
+                        setIsEditMode(false);
+                    }} className="btn btn-secondary btn-sm ms-3">Cancel</button>
                 )}
             </li>
         );
     }
 
-
     return (
-        <li className="d-flex my-2 p-2" key={task.id}
+        <li className="d-flex my-3 p-2" key={task.id}
             style={{ backgroundColor: '#f1f1f1' }}>
-            {task.text}
+            {text}
             {!task.isCompleted && (
-                <button onClick={() => modifyTaskFunc(task.id)} className="btn btn-warning btn-sm ms-auto">Edit</button>
+                <button onClick={() => setIsEditMode(true)} className="btn btn-warning btn-sm ms-auto">Edit</button>
             )}
             {!task.isCompleted && (
-                <button onClick={() => modifyTaskFunc(task.id)} className="btn btn-danger btn-sm ms-auto">Remove</button>
+                <button onClick={() => modifyTaskCompletionFunc(task.id)} className="btn btn-danger btn-sm ms-3">Remove</button>
             )}
         </li>
     );
