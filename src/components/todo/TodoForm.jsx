@@ -11,7 +11,6 @@ export function TodoForm({ addTaskFunc }) {
         e.preventDefault();
         addTaskFunc(text);
         setText('');
-
     }
 
     return (

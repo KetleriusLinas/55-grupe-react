@@ -15,7 +15,7 @@ import { ServiceInner } from './pages/ServiceInner.jsx';
 import { PublicTemplate } from './templates/PublicTemplates.jsx';
 import { Todo } from './pages/Todo.jsx';
 import { Dashboard } from './pages/Dashboard.jsx';
-import { AdminTemplate } from './templates/AdminTempates.jsx';
+import { AdminTemplate } from './templates/AdminTemplates.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

@@ -1,10 +1,9 @@
 export function ServicesList({ title, services }) {
-
     if (services.length === 0) {
         return (
             <div>
                 <h1 className="display-1">{title}</h1>
-                <p>Empty list</p>
+                <p>Empty list 🚩</p>
             </div>
         );
     }

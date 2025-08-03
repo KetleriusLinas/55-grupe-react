@@ -40,4 +40,3 @@ export function Home() {
         </main>
     );
 }
-// {<img src="/src/assets/react.svg" alt="Logo" />} - veikia, bet geriau importuotis , nes lengviau klaidas ieskoti jas parodo ekrane.

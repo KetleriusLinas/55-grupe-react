@@ -1,8 +1,8 @@
-import { Calc } from "./components/Calc.jsx";
-import { Footer } from "./components/Footer.jsx";
-import { Header } from "./components/Header.jsx";
-import { Main } from "./components/Main.jsx";
-import { Title } from "./components/Title.jsx";
+import { Calc } from "./components/Calc";
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
+import { Main } from "./components/Main";
+import { Title } from "./components/Title";
 
 export function App() {
   return (
@@ -24,8 +24,3 @@ export function App() {
     </>
   );
 }
-
-
-// <button onClick={() => setCount((count) => count + 1)}>
-//   skaicius yra: {count}
-// </button>

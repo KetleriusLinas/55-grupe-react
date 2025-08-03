@@ -7,8 +7,3 @@ export function Title({ text, desc }) {
         </div>
     );
 }
-
-
-// abu daro ta pati
-    // {desc ? <p>{desc}</p> : null} 
-    // {desc && <p>{desc}</p>}
